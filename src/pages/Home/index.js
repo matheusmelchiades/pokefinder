@@ -16,7 +16,7 @@ export default function Home({ history }) {
         <Button
           label="Let's go!"
           onClick={() => {
-            console.log('NEXT PAGE');
+            history.push('/form/user');
           }}
         />
       </Content>
