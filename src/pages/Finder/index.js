@@ -42,9 +42,8 @@ export default function Finder() {
     }
   }, [inputRef]);
 
+  // CONSUME DATA FROM API
   useEffect(() => {
-    loadCache();
-
     api
       .get('/pokemons?_limit=20')
       .then((res) => res.data)
@@ -58,7 +57,20 @@ export default function Finder() {
     api
       .get('/types')
       .then((res) => res.data)
-      .then((data) => setTypes(data || []))
+      .then((data) => {
+        const cacheUser = storage.load('user');
+
+        if (cacheUser && cacheUser.perfil) {
+          const filtred = data.filter((pokType) => {
+            return pokType.name !== cacheUser.perfil.name;
+          });
+
+          setCurrentType(cacheUser.perfil);
+          setTypes([cacheUser.perfil, ...filtred]);
+        } else {
+          setTypes(data || []);
+        }
+      })
       .catch((err) => console.log(err));
   }, []);
 
@@ -81,14 +93,6 @@ export default function Finder() {
       setPokemons(data);
     }
   }, [currentType, cache]);
-
-  const loadCache = () => {
-    const cacheUser = storage.load('user');
-
-    if (cacheUser && cacheUser.perfil) {
-      setCurrentType(cacheUser.perfil);
-    }
-  };
 
   const handleSearch = (event) => {
     const { value } = event.target;
@@ -137,7 +141,7 @@ export default function Finder() {
             <Title>Pokémon Finder</Title>
           </HeaderTitle>
         ) : (
-          <SearchInput open={showInput} >
+          <SearchInput open={showInput}>
             <Input ref={inputRef} placeholder="Search" onChange={handleSearch} />
           </SearchInput>
         )}
