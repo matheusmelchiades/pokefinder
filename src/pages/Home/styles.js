@@ -31,6 +31,10 @@ export const Header = styled.div`
   padding-top: 10%;
   padding-left: 10%;
   padding-right: 10%;
+
+  @media ${devices.desktop} {
+    padding-top: 2%;
+  }
 `;
 
 export const Content = styled.div`
@@ -43,6 +47,12 @@ export const Content = styled.div`
   padding-left: 18%;
   padding-right: 18%;
   padding-bottom: 10%;
+
+  @media ${devices.desktop} {
+    padding-left: 30%;
+    padding-right: 30%;
+    padding-bottom: 0;
+  }
 `;
 
 export const Footer = styled.div`
@@ -50,22 +60,39 @@ export const Footer = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
+
+  @media ${devices.desktop} {
+    flex: 1;
+  }
 `;
 
 export const PokemonLogo = styled.img.attrs({
   src: PokemonLogoImage,
 })`
   width: 100%;
+
+  @media ${devices.desktop} {
+    width: 40%;
+  }
 `;
 
 export const FinderLogo = styled.img.attrs({
   src: FinderLogoImage,
 })`
   width: 50%;
+
+  @media ${devices.desktop} {
+    width: 10%;
+    height: 20%;
+  }
 `;
 
 export const Pikachu = styled.img.attrs({
   src: PikachuImage,
 })`
   width: 60%;
+
+  @media ${devices.desktop} {
+    width: 20%;
+  }
 `;

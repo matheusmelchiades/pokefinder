@@ -3,7 +3,6 @@ import api from '../../services/api';
 import * as storage from '../../services/storage';
 
 import Icon from '../../components/Icon';
-import BottomModal from '../../components/Modals/Bottom';
 
 import {
   Container,
@@ -28,6 +27,7 @@ import {
   Selectable,
   SelectableText,
   SelectableIcon,
+  Modal,
 } from './styles';
 
 export default function PerfilForm({ history }) {
@@ -65,7 +65,7 @@ export default function PerfilForm({ history }) {
 
   return (
     <>
-      <BottomModal open={openModal}>
+      <Modal open={openModal}>
         <ModalHeader>
           <TitleModal>Select your favorite pokémon type</TitleModal>
           <IconButton onClick={() => setOpenModal(false)}>
@@ -101,7 +101,7 @@ export default function PerfilForm({ history }) {
         <ModalFooter>
           <ConfirmButton label="Confirm" onClick={() => setOpenModal(false)} />
         </ModalFooter>
-      </BottomModal>
+      </Modal>
 
       <Container>
         <Header>

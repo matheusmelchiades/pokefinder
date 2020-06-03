@@ -27,6 +27,10 @@ export const Header = styled.div`
   padding-top: 17%;
   padding-left: 10%;
   padding-right: 10%;
+
+  @media ${devices.desktop} {
+    padding-top: 2%;
+  }
 `;
 
 export const Content = styled.div`
@@ -38,14 +42,24 @@ export const Content = styled.div`
   padding-top: 10%;
   padding-left: 10%;
   padding-right: 10%;
+
+  @media ${devices.desktop} {
+    padding-top: 5%;
+    padding-left: 30%;
+    padding-right: 30%;
+  }
 `;
 
 export const Footer = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 1;
+
+  @media ${devices.desktop} {
+    margin-top: -20%;
+  }
 `;
 
 export const Title = styled.p`

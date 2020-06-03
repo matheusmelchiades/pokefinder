@@ -1,27 +1,35 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
-import { Container, ButtonScroll } from './styles';
+import { Container, ButtonScroll, ButtonIcon } from './styles';
 
-const DESKTOP_SIZE = 500;
+const SCROLL_SIZE = 450;
 
-export default function index({ children, ...props }) {
-  const isDesktop = window.innerWidth > DESKTOP_SIZE;
+export default function HorizontalScroll({ children, ...props }) {
+  const scrollRef = useRef(null);
+
+  const forceScroll = (side) => {
+    if (scrollRef.current) {
+      if (side === 'left') {
+        scrollRef.current.scrollLeft -= SCROLL_SIZE;
+      }
+
+      if (side === 'right') {
+        scrollRef.current.scrollLeft += SCROLL_SIZE;
+      }
+    }
+  };
 
   return (
-    <Container {...props}>
-      {isDesktop && (
-        <ButtonScroll side="left">
-          <p>LEFT</p>
-        </ButtonScroll>
-      )}
+    <Container ref={scrollRef} {...props}>
+      <ButtonScroll side="left" onClick={() => forceScroll('left')}>
+        <ButtonIcon side="left" />
+      </ButtonScroll>
 
       {children}
 
-      {isDesktop && (
-        <ButtonScroll side="right">
-          <p>RIGHT</p>
-        </ButtonScroll>
-      )}
+      <ButtonScroll side="right" onClick={() => forceScroll('right')}>
+        <ButtonIcon side="right" />
+      </ButtonScroll>
     </Container>
   );
 }

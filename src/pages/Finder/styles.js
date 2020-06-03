@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 
+import devices from '../../styles/devices';
 import HorizontalScroll from '../../components/Scrolls/Horizontal';
 import Icon from '../../components/Icon';
 import InputComponent from '../../components/Inputs/Outlined';
@@ -35,6 +36,10 @@ export const HeaderTitle = styled.div`
   width: 70%;
   margin-left: auto;
   margin-right: 5%;
+
+  @media ${devices.desktop} {
+    margin-left: 42%;
+  }
 `;
 
 export const Title = styled.h2``;
@@ -77,6 +82,13 @@ export const TypeComponent = styled.div`
   background: ${({ selected }) => (!!selected ? 'var(--color-green-light)' : '')};
   border-radius: 10px;
   padding: 15px;
+  cursor: pointer;
+
+  @media ${devices.desktop} {
+    :active {
+      transform: translate(-1px, 4px);
+    }
+  }
 `;
 
 export const TypeAvatar = styled.img`

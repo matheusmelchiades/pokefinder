@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { Container, Content } from './styles';
 
-export default function ModalBottom({ open = false, children }) {
+export default function ModalBottom({ open = false, children, ...props }) {
   const [life, setLife] = useState(false);
 
   useEffect(() => {
@@ -19,7 +19,9 @@ export default function ModalBottom({ open = false, children }) {
 
   return (
     <Container open={open}>
-      <Content open={open}>{life && children}</Content>
+      <Content open={open} {...props}>
+        {life && children}
+      </Content>
     </Container>
   );
 }

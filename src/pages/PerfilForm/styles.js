@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import devices from '../../styles/devices';
 import Button from '../../components/Button';
 import Icon from '../../components/Icon';
+import BottomModal from '../../components/Modals/Bottom';
 
 import BackgroundScreen from '../../assets/background/bg.png';
 import BackgroundPlus from '../../assets/background/Plus.png';
@@ -30,6 +31,13 @@ export const Header = styled.div`
   padding-left: 10%;
   padding-right: 10%;
   padding-bottom: 10%;
+
+  @media ${devices.desktop} {
+    padding-top: 2.5%;
+    padding-left: 30%;
+    padding-right: 30%;
+    padding-bottom: 5%;
+  }
 `;
 
 export const Content = styled.div`
@@ -41,6 +49,12 @@ export const Content = styled.div`
   padding-top: 10%;
   padding-left: 10%;
   padding-right: 10%;
+
+  @media ${devices.desktop} {
+    padding-top: 0%;
+    padding-left: 30%;
+    padding-right: 30%;
+  }
 `;
 
 export const Selectable = styled.div`
@@ -89,6 +103,10 @@ export const Footer = styled.div`
   justify-content: center;
   align-items: center;
   flex: 1;
+
+  @media ${devices.desktop} {
+    margin-top: -15%;
+  }
 `;
 
 export const Title = styled.p`
@@ -119,6 +137,12 @@ export const ConfirmButton = styled(Button)`
 /**
  * MODAL
  */
+export const Modal = styled(BottomModal)`
+  @media ${devices.desktop} {
+    width: 60%;
+    margin: 0 auto;
+  }
+`;
 
 export const ModalHeader = styled.div`
   display: flex;
