@@ -8,6 +8,7 @@ import Next from '../../assets/icons/next/next@3x.png';
 import RadioOff from '../../assets/icons/radio-off/radio-off@3x.png';
 import RadioOn from '../../assets/icons/radio-on/radio-on@3x.png';
 import SemiArrow from '../../assets/icons/semi-arrow/semi-arrow.svg';
+import Search from '../../assets/icons/search/search.png';
 
 const ICONS_PATH = {
   arrow: Arrow,
@@ -16,6 +17,7 @@ const ICONS_PATH = {
   'radio-off': RadioOff,
   'radio-on': RadioOn,
   'semi-arrow': SemiArrow,
+  'search': Search
 };
 
 export default function Icon({ name, src, ...props }) {

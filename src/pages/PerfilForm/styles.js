@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import devices from '../../styles/devices';
 import Button from '../../components/Button';
+import Icon from '../../components/Icon';
 
 import BackgroundScreen from '../../assets/background/bg.png';
 import BackgroundPlus from '../../assets/background/Plus.png';
@@ -19,15 +20,16 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.div`
-  display: flex;
   flex: 1;
+  display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: space-around;
 
-  padding-top: 17%;
+  padding-top: 20%;
   padding-left: 10%;
   padding-right: 10%;
+  padding-bottom: 10%;
 `;
 
 export const Content = styled.div`
@@ -39,6 +41,46 @@ export const Content = styled.div`
   padding-top: 10%;
   padding-left: 10%;
   padding-right: 10%;
+`;
+
+export const Selectable = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  margin-top: 18px;
+
+  width: 100%;
+  padding: 5px 0;
+  border: 0;
+  border-bottom: solid 2px white;
+  background: none;
+
+  font-size: 18px;
+  font-weight: 500;
+  text-align: start;
+  color: white;
+
+  :focus {
+    outline: 0;
+    border-bottom: solid 3.4px white;
+  }
+
+  :hover {
+    border-bottom: solid 3.4px white;
+  }
+`;
+
+export const SelectableText = styled.p`
+  font-size: 24px;
+  text-transform: capitalize;
+`;
+
+export const SelectableIcon = styled(Icon).attrs({
+  name: 'semi-arrow',
+  size: 'smallMedium',
+})`
+  transform: rotate(270deg);
 `;
 
 export const Footer = styled.div`

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
+import * as storage from '../../services/storage';
 
 import Icon from '../../components/Icon';
-import Input from '../../components/Inputs/Standard';
 import BottomModal from '../../components/Modals/Bottom';
 
 import {
@@ -25,12 +25,15 @@ import {
   RowTypeContent,
   RowTypeAction,
   ConfirmButton,
+  Selectable,
+  SelectableText,
+  SelectableIcon,
 } from './styles';
 
 export default function PerfilForm({ history }) {
   const [favoriteType, setFavoriteType] = useState(null);
   const [types, setTypes] = useState([]);
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     api
@@ -41,16 +44,23 @@ export default function PerfilForm({ history }) {
       .catch((err) => console.log('Error to get types!'));
   }, []);
 
-  const handleKeyPress = (event) => {
-    if (event.key === 'Enter') {
-      setOpenModal((prev) => !prev);
-    }
-  };
-
   const submit = () => {
-    if (!favoriteType || !favoriteType?.name) return;
+    const { user } = history.location.state;
 
-    history.push('/finder');
+    if (!favoriteType) return;
+
+    if (user) {
+      const cacheUser = storage.load(user);
+
+      storage.save(user, {
+        ...cacheUser,
+        perfil: favoriteType,
+      });
+
+      history.push('/finder', { user });
+    } else {
+      history.push('/form/user');
+    }
   };
 
   return (
@@ -76,7 +86,11 @@ export default function PerfilForm({ history }) {
 
                 <RowTypeAction>
                   <IconButton onClick={() => setFavoriteType(pokemonType)}>
-                    {favoriteType?.name === pokemonType.name ? <Icon name="radio-on" size="medium" /> : <Icon name="radio-off" size="medium" />}
+                    {favoriteType?.name === pokemonType.name ? (
+                      <Icon name="radio-on" size="medium" />
+                    ) : (
+                      <Icon name="radio-off" size="medium" />
+                    )}
                   </IconButton>
                 </RowTypeAction>
               </RowType>
@@ -85,7 +99,7 @@ export default function PerfilForm({ history }) {
         </ModalContent>
 
         <ModalFooter>
-          <ConfirmButton label="Confirm" onClick={submit} />
+          <ConfirmButton label="Confirm" onClick={() => setOpenModal(false)} />
         </ModalFooter>
       </BottomModal>
 
@@ -98,10 +112,13 @@ export default function PerfilForm({ history }) {
         </Header>
         <Content>
           <Info>...now tell us wich is your favorite Pokémon type:</Info>
-          <Input onKeyPress={handleKeyPress} />
+          <Selectable onClick={() => setOpenModal(true)}>
+            <SelectableText>{favoriteType?.name || ''}</SelectableText>
+            <SelectableIcon />
+          </Selectable>
         </Content>
         <Footer>
-          <IconButton onClick={() => history.push('/finder')}>
+          <IconButton onClick={submit}>
             <Icon name="next" size="large" />
           </IconButton>
         </Footer>

@@ -5,10 +5,6 @@ import devices from '../../styles/devices';
 import BackgroundScreen from '../../assets/background/bg.png';
 import BackgroundPlus from '../../assets/background/Plus.png';
 
-import PokemonLogoImage from '../../assets/pokemon-logo/pokemon-logo@2x.png';
-import FinderLogoImage from '../../assets/finder/finder@2x.png';
-import PikachuImage from '../../assets/pikachu/pikachu@3x.png';
-
 export const Container = styled.div`
   flex: 1;
   display: flex;
