@@ -16,7 +16,7 @@ export const Container = styled.div`
 
   scroll-behavior: smooth;
 
-  @media ${devices.desktop} {
+  @media ${devices.laptopLarge} {
     padding-left: 5%;
   }
 `;
@@ -55,7 +55,7 @@ export const ButtonScroll = styled.button`
 
   visibility: hidden;
 
-  @media ${devices.desktop} {
+  @media ${devices.laptopLarge} {
     visibility: visible;
   }
 `;

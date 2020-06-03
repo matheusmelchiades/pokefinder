@@ -12,7 +12,7 @@ export const Container = styled.div`
   height: 100vh;
   background: url(${BackgroundScreen});
 
-  @media ${devices.desktop} {
+  @media ${devices.laptopLarge} {
     background: url(${BackgroundPlus});
   }
 `;
@@ -28,7 +28,7 @@ export const Header = styled.div`
   padding-left: 10%;
   padding-right: 10%;
 
-  @media ${devices.desktop} {
+  @media ${devices.laptopLarge} {
     padding-top: 2%;
   }
 `;
@@ -43,7 +43,7 @@ export const Content = styled.div`
   padding-left: 10%;
   padding-right: 10%;
 
-  @media ${devices.desktop} {
+  @media ${devices.laptopLarge} {
     padding-top: 5%;
     padding-left: 30%;
     padding-right: 30%;
@@ -57,7 +57,7 @@ export const Footer = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media ${devices.desktop} {
+  @media ${devices.laptopLarge} {
     margin-top: -20%;
   }
 `;

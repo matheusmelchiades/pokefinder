@@ -37,7 +37,7 @@ export const HeaderTitle = styled.div`
   margin-left: auto;
   margin-right: 5%;
 
-  @media ${devices.desktop} {
+  @media ${devices.laptopLarge} {
     margin-left: 42%;
   }
 `;
@@ -84,7 +84,7 @@ export const TypeComponent = styled.div`
   padding: 15px;
   cursor: pointer;
 
-  @media ${devices.desktop} {
+  @media ${devices.laptopLarge} {
     :active {
       transform: translate(-1px, 4px);
     }

@@ -45,7 +45,7 @@ export default function Finder() {
   // CONSUME DATA FROM API
   useEffect(() => {
     api
-      .get('/pokemons?_limit=20')
+      .get('/pokemons?_limit=100')
       .then((res) => res.data)
       .then((data) => {
         setCache(data);

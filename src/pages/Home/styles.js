@@ -16,7 +16,7 @@ export const Container = styled.div`
   height: 100vh;
   background: url(${BackgroundScreen});
 
-  @media ${devices.desktop} {
+  @media ${devices.laptopLarge} {
     background: url(${BackgroundPlus});
   }
 `;
@@ -32,7 +32,7 @@ export const Header = styled.div`
   padding-left: 10%;
   padding-right: 10%;
 
-  @media ${devices.desktop} {
+  @media ${devices.laptopLarge} {
     padding-top: 2%;
   }
 `;
@@ -48,7 +48,7 @@ export const Content = styled.div`
   padding-right: 18%;
   padding-bottom: 10%;
 
-  @media ${devices.desktop} {
+  @media ${devices.laptopLarge} {
     padding-left: 30%;
     padding-right: 30%;
     padding-bottom: 0;
@@ -61,7 +61,7 @@ export const Footer = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
 
-  @media ${devices.desktop} {
+  @media ${devices.laptopLarge} {
     flex: 1;
   }
 `;
@@ -71,7 +71,7 @@ export const PokemonLogo = styled.img.attrs({
 })`
   width: 100%;
 
-  @media ${devices.desktop} {
+  @media ${devices.laptopLarge} {
     width: 40%;
   }
 `;
@@ -81,7 +81,7 @@ export const FinderLogo = styled.img.attrs({
 })`
   width: 50%;
 
-  @media ${devices.desktop} {
+  @media ${devices.laptopLarge} {
     width: 10%;
     height: 20%;
   }
@@ -92,7 +92,7 @@ export const Pikachu = styled.img.attrs({
 })`
   width: 60%;
 
-  @media ${devices.desktop} {
+  @media ${devices.laptopLarge} {
     width: 20%;
   }
 `;

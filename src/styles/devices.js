@@ -10,12 +10,12 @@ export const sizes = {
 };
 
 export default {
-  mobileSmall: `(max-width: ${sizes.mobileSmall}px)`,
-  mobileMedium: `(max-width: ${sizes.mobileMedium}px)`,
-  mobileLarge: `(max-width: ${sizes.mobileLarge}px)`,
-  tablet: `(max-width: ${sizes.tablet}px)`,
-  laptop: `(max-width: ${sizes.laptop}px)`,
-  laptopLarge: `(max-width: ${sizes.laptopLarge}px)`,
-  desktop: `(max-width: ${sizes.desktop}px)`,
-  desktopLarge: `(max-width: ${sizes.desktopLarge}px)`,
+  mobileSmall: `(min-width: ${sizes.mobileSmall}px)`,
+  mobileMedium: `(min-width: ${sizes.mobileMedium}px)`,
+  mobileLarge: `(min-width: ${sizes.mobileLarge}px)`,
+  tablet: `(min-width: ${sizes.tablet}px)`,
+  laptop: `(min-width: ${sizes.laptop}px)`,
+  laptopLarge: `(min-width: ${sizes.laptopLarge}px)`,
+  desktop: `(min-width: ${sizes.laptopLarge}px)`,
+  desktopLarge: `(min-width: ${sizes.desktopLarge}px)`,
 };
