@@ -1,73 +1,89 @@
-<<<<<<< HEAD
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Dev React Vortigo
 
-## Available Scripts
+You can also read a translated of this file in 
+ - [Portuguese](./documents/README_PT.md)
 
-In the project directory, you can run:
+***
 
-### `yarn start`
+This application has as premise to demonstrate some skills of a develop clearly, showing how the developer works technically.
 
-Runs the app in the development mode.<br />
+![image app](./documents/medias/68747470733a2f2f766f727469676f2e626c6f622e636f72652e77696e646f77732e6e65742f66696c65732f706f6b656d6f6e2f6173736574732f6c61796f75742d696f732e706e67.png)
+
+# 💻 Technologies
+
+- <img src="https://nodejs.org/static/images/favicons/favicon-32x32.png" width="15px" height="15px"> [Node.js](https://nodejs.org/en/)
+- <img src="https://reactjs.org/favicon.ico" width="15px" height="15px"> [React.js](https://reactjs.org/)
+
+# 📚 Libraries
+
+- [React router dom](https://reacttraining.com/react-router/)
+- [axios](https://github.com/axios/axios)
+- [styled-components](https://styled-components.com/)
+
+# How to use?
+
+## Development
+
+When developing components, you may want assets automatically compiled and the browser to refresh automatically. To do this, run the following task:
+
+```
+> npm start
+or
+> yarn start
+```
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Creating a static build
 
-### `yarn test`
+To create a static instance of this project, run the following task:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+> npm run build
+or
+> yarn run build
+```
 
-### `yarn build`
+---
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Arquiteture
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Sometimes it’s helpful to know what all these different files are for…
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-=======
-# dev-react-vortigo
-
->>>>>>> bf325ed8feffd301deab2942f7190cf60f77324b
+```
+/
+├─ development/        # Development (Mocks, Fake server)
+│
+├─ public/             # Statics files
+│
+├─ src/
+│  ├─ App/             # Main centralizer of all providers
+│  │
+│  ├─ assets/          # Assets
+│  │
+│  ├─ components/      # Components
+│  │
+│  ├─ helper/          # Helpers
+│  │
+│  ├─ pages/           # Pages
+│  │  └─ <Page Name>/  # Folder that centralizes everything about the page
+│  │      ├─ index     # Responsible for centralizes all bussiness
+│  │      └─ styles    # Responsible for styles of page
+│  │
+│  ├─ routes/          # Centralize routes of Application
+│  │
+│  ├─ services/        # Services centralizes all external or internal services
+│  │  ├─ api           # Responsible for apply settings about api
+│  │  └─ storage       # Responsible for apply settings about storage local
+│  │
+│  └─ styles/          # Styles
+│     ├─ animations    # Common animations
+│     ├─ devices       # Constants about all devices types
+│     ├─ global        # Settings global styles
+│     └─ settings      # Constants about all application (colors, fonts...)
+│
+├─ .gitignore          # List of files and folders not tracked by Git
+├─ .prettierrc         # Formatter preferences for JavasScript
+├─ package.json        # Project manifest
+└─ README.md           # This file
+```
