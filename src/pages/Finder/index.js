@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createRef } from 'react';
+import React, { useState, useEffect, createRef, useRef } from 'react';
 import api from '../../services/api';
 import * as helper from '../../helper/handlerArray';
 import * as storage from '../../services/storage';
@@ -27,14 +27,18 @@ import {
   SearchButton,
 } from './styles';
 
+const LIMIT = 100;
+
 export default function Finder() {
   const inputRef = createRef();
+  const listPokRef = useRef();
   const [cache, setCache] = useState([]);
   const [types, setTypes] = useState([]);
   const [currentType, setCurrentType] = useState(null);
   const [pokemons, setPokemons] = useState([]);
   const [orderNames, setOrderNames] = useState();
   const [showInput, setShowInput] = useState(false);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -45,7 +49,7 @@ export default function Finder() {
   // CONSUME DATA FROM API
   useEffect(() => {
     api
-      .get('/pokemons?_limit=100')
+      .get(`/pokemons?_page=1&_limit=${LIMIT}`)
       .then((res) => res.data)
       .then((data) => {
         setCache(data);
@@ -129,6 +133,28 @@ export default function Finder() {
     setCurrentType(pokType);
   };
 
+  const onScroll = async () => {
+    if (!listPokRef.current) return;
+
+    const { scrollTop, scrollHeight, offsetHeight } = listPokRef?.current;
+    const final = scrollHeight - offsetHeight;
+    const beforeFinal = Math.round(final - final * 0.35);
+
+    if (scrollTop === beforeFinal || scrollTop === final) {
+      try {
+        const response = await api.get(`/pokemons?_page=${page}&_limit=${LIMIT}`);
+
+        if (response.status !== 200) return;
+
+        setPokemons([...pokemons, ...response.data]);
+        setCache([...cache, ...response.data]);
+        setPage(page + 1);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
+
   return (
     <Container>
       <Header>
@@ -171,7 +197,7 @@ export default function Finder() {
 
       <LineDivisor />
 
-      <PokemonList>
+      <PokemonList ref={listPokRef} onScroll={onScroll}>
         {pokemons.map((pokemon, index) => (
           <PokemonListRow key={index}>
             <PokemonAvatar src={pokemon.thumbnailImage} />
